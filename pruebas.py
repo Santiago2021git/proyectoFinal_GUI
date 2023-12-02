@@ -43,6 +43,12 @@ class MainWindow(QMainWindow):
         self.pushButton_16.clicked.connect(self.cerrar_submenu)
         self.pushButton_18.clicked.connect(self.verificar_creacion_cliente)
         self.pushButton_23.clicked.connect(self.verificar_creacion_antibiotico)
+        self.pushButton_22.clicked.connect(self.verificar_creacion_fertilizante)
+        self.pushButton_24.clicked.connect(self.verificar_creacion_pesticida)
+        self.pushButton_25.clicked.connect(self.verificar_eliminacion_antibiotico)
+        self.pushButton_26.clicked.connect(self.verificar_eliminacion_cliente)
+        self.pushButton_27.clicked.connect(self.verificar_eliminacion_fertilizante)
+        self.pushButton_28.clicked.connect(self.verificar_eliminacion_pesticida)
         
     def pantalla_maximizar (self) :
         self.showMaximized()
@@ -151,7 +157,6 @@ class MainWindow(QMainWindow):
 
     
     def verificar_creacion_cliente(self):
-        # Obtener el texto ingresado por el usuario en ambos LineEdit
         nombre_cliente = self.lineEdit.text()
         cedula_cliente = self.lineEdit_2.text()
 
@@ -177,6 +182,92 @@ class MainWindow(QMainWindow):
            
             mensaje = f'nombre antibiotico: {nombre_antibiotico}\ndosis: {dosis_antibiotico}\nprecio: {precio_antibiotico}'
             QMessageBox.information(self, 'Información', mensaje)
+            
+            
+            
+    
+    def verificar_creacion_fertilizante (self):
+        registro_ica_fertilizante = self.lineEdit_3.text()
+        nombre_fertilizante = self.lineEdit_5.text()
+        frecuencia_aplicacion_fertilizante = self.lineEdit_4.text()
+        precio_fertilizante = self.lineEdit_6.text()
+        ultima_fecha_aplicacion_fertilizante = self.lineEdit_7.text()
+        
+        
+        if not registro_ica_fertilizante or not nombre_fertilizante or not frecuencia_aplicacion_fertilizante or not precio_fertilizante or not ultima_fecha_aplicacion_fertilizante :
+           
+            QMessageBox.warning(self, 'Advertencia', 'Por favor, complete los campos antes de confirmar.')
+        else:
+           
+            mensaje = f'registro ica: {registro_ica_fertilizante}\nnombre: {nombre_fertilizante}\nfrecuencia aplicacion: {frecuencia_aplicacion_fertilizante}\nprecio: {precio_fertilizante}\nultima aplicacion: {ultima_fecha_aplicacion_fertilizante}'
+            QMessageBox.information(self, 'Información', mensaje)
+        
+        
+        
+    def verificar_creacion_pesticida (self) :
+        registro_ica_pesticida = self.lineEdit_9.text()
+        nombre_pesticida = self.lineEdit_13.text()
+        frecuencia_aplicacion_pesticida = self.lineEdit_12.text()
+        precio_pesticida = self.lineEdit_17.text()
+        ultima_fecha_aplicacion_pesticida = self.lineEdit_18.text()
+        
+        
+        if not registro_ica_pesticida or not nombre_pesticida or not frecuencia_aplicacion_pesticida or not precio_pesticida or not ultima_fecha_aplicacion_pesticida :
+           
+            QMessageBox.warning(self, 'Advertencia', 'Por favor, complete los campos antes de confirmar.')
+        else:
+           
+            mensaje = f'registro ica: {registro_ica_pesticida}\nnombre: {nombre_pesticida}\nfrecuencia aplicacion: {frecuencia_aplicacion_pesticida}\nprecio: {precio_pesticida }\nultima aplicacion: {ultima_fecha_aplicacion_pesticida}'
+            QMessageBox.information(self, 'Información', mensaje)
+        
+        
+    def verificar_eliminacion_antibiotico (self) :
+        nombre_antibiotico_eliminar = self.lineEdit_19.text()
+        
+        
+        if not nombre_antibiotico_eliminar :
+           
+            QMessageBox.warning(self, 'Advertencia', 'Por favor, complete el campo antes de confirmar.')
+        else:
+           
+            mensaje = f'Antibiotico eliminado'
+            QMessageBox.information(self, 'Información', mensaje)
+        
+        
+    def verificar_eliminacion_cliente (self) :
+        cedula_cliente_eliminar = self.lineEdit_23.text()
+        
+        if not cedula_cliente_eliminar :
+            
+             QMessageBox.warning(self, 'Advertencia', 'Por favor, complete el campo antes de confirmar.')
+        else:
+           
+            mensaje = f'cliente eliminado'
+            QMessageBox.information(self, 'Información', mensaje)
+        
+    
+    def verificar_eliminacion_fertilizante (self) :
+        nombre_fertilizante_eliminar = self.lineEdit_24.text()
+        
+        if not nombre_fertilizante_eliminar :
+            
+             QMessageBox.warning(self, 'Advertencia', 'Por favor, complete el campo antes de confirmar.')
+        else:
+           
+            mensaje = f'fertilizante eliminado'
+            QMessageBox.information(self, 'Información', mensaje) 
+        
+    def verificar_eliminacion_pesticida (self) :
+        nombre_pesticida_eliminar = self.lineEdit_25.text()
+            
+        if not nombre_pesticida_eliminar :
+            
+             QMessageBox.warning(self, 'Advertencia', 'Por favor, complete el campo antes de confirmar.')
+        else:
+           
+            mensaje = f'pesticida eliminado'
+            QMessageBox.information(self, 'Información', mensaje)     
+        
         
 if __name__ == "__main__":
     app = QApplication(sys.argv)
@@ -184,4 +275,7 @@ if __name__ == "__main__":
     GUI.show()
     sys.exit(app.exec_())
 
-        
+
+    
+
+                            
